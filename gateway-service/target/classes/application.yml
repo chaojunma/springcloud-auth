@@ -1,0 +1,8 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: gateway-service
+  redis:
+    url: redis://10.32.15.78:6379

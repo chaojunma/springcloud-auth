@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: auth-service
+  redis:
+    url: redis://10.32.15.78:6379
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    druid:
+      # 验证连接是否有效。此参数必须设置为非空字符串，下面三项设置成true才能生效
+      validation-query: SELECT 1
+      # 连接是否被空闲连接回收器(如果有)进行检验. 如果检测失败, 则连接将被从池中去除
+      test-while-idle: true
+      # 是否在从池中取出连接前进行检验, 如果检验失败, 则从池中去除连接并尝试取出另一个
+      test-on-borrow: true
+      # 是否在归还到池中前进行检验
+      test-on-return: false
+      # 连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 30000
+
+#mybatis配置
+mybatis-plus:
+  type-aliases-package: com.mk.auth.entity
+  mapper-locations: classpath:mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
