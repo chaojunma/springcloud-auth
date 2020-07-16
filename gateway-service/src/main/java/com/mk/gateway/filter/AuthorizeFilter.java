@@ -1,4 +1,4 @@
-package com.mk.gateway;
+package com.mk.gateway.filter;
 
 import com.alibaba.fastjson.JSON;
 import com.auth0.jwt.exceptions.JWTDecodeException;
